@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.19.2",
+    "joi": "^17.13.3",
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
