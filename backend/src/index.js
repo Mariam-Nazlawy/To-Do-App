@@ -1,9 +1,16 @@
 const express = require('express');
-const app = express();
+const routes = require('./routes/routers');
 
+// middleware
+const app = express();
+app.use(express.json());
+
+
+// routes
 app.get('/', (req, res) => {
     res.send("Hello User");
 })
+app.use('/api', routes);
 
 
 // add environment variable of the port
