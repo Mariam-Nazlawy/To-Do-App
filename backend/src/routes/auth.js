@@ -1,6 +1,7 @@
 const express = require('express');
-const authRoute = express.Router(); 
-authRoute.use(express.json()); // allow server to use json file
+const authRoutes = express.Router(); 
+const joi = require('joi');
+//authRoute.use(express.json()); // allow server to use json file
 
 let users = [
     { userId: 1, email: 'kjskfj@ljf.com', password: '12235' },
@@ -10,30 +11,53 @@ let users = [
 
 ]
 
-authRoute.post('/auth/signup', (req, res) => {
+authRoutes.post('/signup', (req, res) => {
     // validate email and password using joi
-
+    
     // create schema 
+    const schema = joi.object().keys({
+        email: joi.string().trim().email().required(),
+        password: joi.string().min(6).max(8).required()
+    });
+
 
     // validte the input with the schema
-    
-    // if valid add to database 
-    
-    // else return an error massage
+    const validation = schema.validate(req.body); 
+
+    // if invalide send error message
+    if (validation.error)
+        res.send(validation.error.message);
+        
+    // if valid add to the database and send confirmation message 
+    else {
+        const user = {
+            userId: users.length + 1,
+            email: req.body.email,
+            password: req.body.password
+        };
+        users.push(user);
+
+         res.send("signed up successfully!");
+         console.log(validation);
+        
+    }
+    console.log(users);
        
 })
 
-authRoute.post('/auth/login', (req, res) => {
+
+
+authRoutes.post('/auth/login', (req, res) => {
     req.body.email;
     req.body.password;
 })
 
-authRoute.post('/auth/logout', (req, res) => {
+authRoutes.post('/auth/logout', (req, res) => {
     
 })
 
-authRoute.post('/auth/reset-password', (req, res) => {
+authRoutes.post('/auth/reset-password', (req, res) => {
     
 })
 
-module.exports = authRoute;
+module.exports = authRoutes;
