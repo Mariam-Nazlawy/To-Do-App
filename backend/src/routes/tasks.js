@@ -1,29 +1,21 @@
 const express = require('express');
 const tasksRoutes = express.Router();
+const {
+    createTask,
+    getTask,
+    getSpecificTask,
+    updateTask,
+    completeTask,
+    deleteTask
+} = require('../controller/tasks');
 
-// create new task
-tasksRoutes.post('/', (req, res) => {
-    
-})
+// create new task & Retrieve all tasks for the authenticated user
+tasksRoutes.route('/').post(createTask).get(getTask);
 
-//  Retrieve all tasks for the authenticated user
-tasksRoutes.get('/', (req, res) => {
-    res.send("hello from tasks endpoint!");
-})
-
-// Retrieve a specific task by ID
-tasksRoutes.get('/:id', (req, res) => {
-    
-})
-
-//  Update a task by ID
-tasksRoutes.put('/:id', (req, res) => {
-    
-})
+// Retrieve a specific task by ID & Update a task by ID & Delete task
+tasksRoutes.route('/:id').get(getSpecificTask).put(updateTask).delete(deleteTask);
 
 // Mark a task as completed
-tasksRoutes.patch('/:id/complete', (req, res) => {
-
-})
+tasksRoutes.route('/:id/complete').patch(completeTask);
 
 module.exports = tasksRoutes;
