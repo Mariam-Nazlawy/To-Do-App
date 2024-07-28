@@ -15,11 +15,11 @@ const createTask = async (req, res) => {
 // Retrieve all tasks
 const getTask = async (req, res) => {
     try {
-       const task = await Task.find(req.body)
-       res.status(201).json({ task })
+       const tasks = await Task.find({})
+       res.status(200).json({ tasks })
     }
     catch (error) {
-       res.status(500).json({ message: error.message });
+       res.status(500).json({ message: error.message })
     }
 }
 
@@ -27,11 +27,15 @@ const getTask = async (req, res) => {
 //Retrieve a specific task by ID
 const getSpecificTask = async (req, res) => {
     try {
-        const task = await Task.findById(req.body)
+        const taskId = req.params.id
+        const task = await Task.findById(taskId)
+        if (!task) {
+            return res.status(400).json({message:`No task with id ${taskId}`})
+        }        
         res.status(201).json({ task })
     }
     catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message })
     }
 }
 
@@ -39,11 +43,17 @@ const getSpecificTask = async (req, res) => {
 // Update a task by ID
 const updateTask = async (req, res) => {
     try {
-        const task = await Task.findByIdAndUpdate(req.body)
+        const taskId = req.params.id
+        const task = await Task.findByIdAndUpdate(taskId, req.body,
+            {
+                new: true,
+                runValidators: true,
+                overwrite: true
+            })
         res.status(201).json({ task })
     }
     catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message })
     }
 }
 
@@ -51,11 +61,16 @@ const updateTask = async (req, res) => {
 // Mark a task as completed
 const completeTask = async (req, res) => {
     try {
-        const task = await Task.findByIdAndUpdate(req.body)
-        res.status(201).json({ task })
+        const taskId = req.params.id
+        const task = await Task.findByIdAndUpdate(taskId, req.body,
+    {
+        new: true,
+        runValidators: true
+    })
+        res.status(200).json({ task })
     }   
     catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message })
     }
 }
 
@@ -63,11 +78,15 @@ const completeTask = async (req, res) => {
 // Delete a task by id
 const deleteTask = async (req, res) => {
     try {
-        const task = await Task.findByIdAndUpdate(req.body)
-        res.status(201).json({ task })
+        const taskId = req.params.id
+        const task = await Task.findByIdAndDelete(taskId)
+        if (!task) {
+            return res.status(400).json({message:`No task with id ${taskId}`})
+        }        
+        res.status(200).json({ task })
     }
     catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message })
     }
 }
 

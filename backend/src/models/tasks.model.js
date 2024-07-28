@@ -1,11 +1,12 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 const TaskSchema = new  mongoose.Schema(
     {
-        user_id: {
-                    type: Schema.Types.ObjectId,
-                    ref: 'User',
-                    required: true
-        },
+        // user_id: {
+                    // type: Schema.Types.ObjectId,
+                    // ref: 'User',
+                    // required: true
+        // },
 
         title: {
             type: String,
@@ -15,6 +16,7 @@ const TaskSchema = new  mongoose.Schema(
         description:
         {
             type: String,
+            required: false
         },
 
         due_date:
@@ -27,6 +29,7 @@ const TaskSchema = new  mongoose.Schema(
         {
             type: String,
             enum: ['low', 'medium', 'high'],
+            required : false
         },
 
         completed:
@@ -41,7 +44,8 @@ const TaskSchema = new  mongoose.Schema(
         },
 
         updated_date: {
-            type: Date
+            type: Date,
+            default: Date.now
         }
     }
 )
