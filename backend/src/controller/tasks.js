@@ -3,8 +3,10 @@ const Task = require('../models/tasks.model')
 // create new task
 const createTask = async (req, res) => {
     try {
+        req.body.userId = req.user.userId
         const task = await Task.create(req.body)
-        res.status(201).json({ task })
+        console.log(task)
+        res.status(201).json(task)
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -15,8 +17,8 @@ const createTask = async (req, res) => {
 // Retrieve all tasks
 const getTask = async (req, res) => {
     try {
-       const tasks = await Task.find({})
-       res.status(200).json({ tasks })
+       const tasks = await Task.find({userId: req.user.userId}).sort('creation_date')
+       res.status(200).json({ tasks, count: tasks.length })
     }
     catch (error) {
        res.status(500).json({ message: error.message })
@@ -27,10 +29,13 @@ const getTask = async (req, res) => {
 //Retrieve a specific task by ID
 const getSpecificTask = async (req, res) => {
     try {
-        const taskId = req.params.id
-        const task = await Task.findById(taskId)
+        const { user: { userId },
+                params: { id: taskId } } = req
+        
+        const task = await Task.findById({ _id: taskId, userId: userId })
+        
         if (!task) {
-            return res.status(400).json({message:`No task with id ${taskId}`})
+            return res.status(404).json({message:`No task with id ${taskId}`})
         }        
         res.status(201).json({ task })
     }
@@ -43,8 +48,13 @@ const getSpecificTask = async (req, res) => {
 // Update a task by ID
 const updateTask = async (req, res) => {
     try {
-        const taskId = req.params.id
-        const task = await Task.findByIdAndUpdate(taskId, req.body,
+        const {
+              user: { userId },
+              params: { id: taskId },
+            } = req
+
+      
+        const task = await Task.findByIdAndUpdate({_id : taskId, userId : userId}, req.body,
             {
                 new: true,
                 runValidators: true,
@@ -61,8 +71,11 @@ const updateTask = async (req, res) => {
 // Mark a task as completed
 const completeTask = async (req, res) => {
     try {
-        const taskId = req.params.id
-        const task = await Task.findByIdAndUpdate(taskId, req.body,
+        const {
+               user: { userId },
+               params: { id: taskId },
+            } = req
+        const task = await Task.findByIdAndUpdate({_id : taskId, userId : userId}, req.body,
     {
         new: true,
         runValidators: true
@@ -78,8 +91,12 @@ const completeTask = async (req, res) => {
 // Delete a task by id
 const deleteTask = async (req, res) => {
     try {
-        const taskId = req.params.id
-        const task = await Task.findByIdAndDelete(taskId)
+        const {
+               user: { userId },
+               params: { id: taskId },
+            } = req
+        
+        const task = await Task.findByIdAndDelete({_id : taskId, userId : userId})
         if (!task) {
             return res.status(400).json({message:`No task with id ${taskId}`})
         }        
