@@ -1,12 +1,12 @@
-const { required } = require('joi');
 const mongoose = require('mongoose');
-const TaskSchema = new  mongoose.Schema(
+
+const TaskSchema = new mongoose.Schema(
     {
-        // user_id: {
-                    // type: Schema.Types.ObjectId,
-                    // ref: 'User',
-                    // required: true
-        // },
+        userId: {
+                    type: mongoose.Types.ObjectId,
+                    ref: 'User',
+                    required: true
+        },
 
         title: {
             type: String,
