@@ -1,12 +1,16 @@
 const connectDB = require('./db/connect');
 const express = require('express');
 const routes = require('./routes/routers');
+const cors = require('cors');
 require('dotenv').config({path: '../.env'})
 
 
 // middleware
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:5000' // Allow only your frontend server
+}));
 
 
 // routes
