@@ -82,8 +82,8 @@ const resetPassword = async (req, res) => {
         user.password = newPassword 
         user.save()
 
-        console.log(newPassword)
-        console.log(user.password)
+        console.log('seccuss')
+        //console.log(user.password)
        
 
         res.status(200).json({ message: "password changed successfully" })

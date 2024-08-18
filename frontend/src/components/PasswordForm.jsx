@@ -28,7 +28,7 @@ export default function PasswordForm() {
                     res.json()
                     console.log(res.status)
                 }).then(res => response = res )
-               response.status === 201 ? toast.success('password changed successfully') : toast.error('An error has occured')
+               response.status === 200 ? toast.success('password changed successfully') : toast.error('An error has occured')
             }
             else {
                 alert('the passwords are not matched')
