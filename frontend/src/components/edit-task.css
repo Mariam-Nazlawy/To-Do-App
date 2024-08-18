@@ -1,0 +1,68 @@
+/* EditTaskForm.css */
+.EditTaskForm {
+    display:flex;
+    flex-direction: column;
+    gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    background: brown;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    -webkit-text-fill-color: bisque;
+}
+
+.EditTaskForm h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 5px;
+}
+.label{
+    color: white;
+}
+.form-group input {
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.form-group label {
+    padding: 5px;
+    font-size: 1rem;
+    color: antiquewhite;
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.save-btn{
+    padding: 10px;
+    background-color: #F2C6A0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+.cancel-btn{
+    padding: 10px;
+    background-color: #26130F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 10px;
+    cursor: pointer;
+}

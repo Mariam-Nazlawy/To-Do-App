@@ -1,11 +1,16 @@
 //import boot from'bootstrap' 
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 //import axios from 'axios'
+import '../pages/home.css'
+import './edit-task.css'
+
 
 
 function AuthForm({ formType }) {
     const endpoint = formType === 'Login' ? "http://localhost:3000/api/auth/login" : "http://localhost:3000/api/auth/signup"
-    
+    const navigate = useNavigate()
+
     const submitForm = async (e) => {
         e.preventDefault()
         const userData = new FormData(e.target)
@@ -20,8 +25,10 @@ function AuthForm({ formType }) {
                 body: JSON.stringify(payload)
             });
             const data = await response.json();
+            if (formType == "Login") { localStorage.setItem("token", data.token) }
             console.log(data.token);
             //const token = data.token
+            navigate(formType === 'Login' ? "/task" : '/login')
         }
         catch (error) {
             console.error(error)
@@ -29,8 +36,8 @@ function AuthForm({ formType }) {
     }
 
     return (
-        <div className='container'>
-            
+        <div className='background-image'>
+            <div className='container'>
             <form onSubmit={submitForm}>
                 {formType === 'Login' ? <h2>Login to your account</h2> : <h2>Create New Account</h2>}
                 
@@ -61,6 +68,7 @@ function AuthForm({ formType }) {
                     {formType}
                 </button>
             </form>
+            </div>
         </div>
 
     )
