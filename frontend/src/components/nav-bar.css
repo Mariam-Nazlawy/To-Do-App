@@ -1,0 +1,53 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 97.5%;
+    background-color: white;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure it stays above other content */
+}
+
+
+.app-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: brown;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    
+}
+
+.login-button, .signup-button, .logout-button, .reset-password-button, .tasks-button{
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.login-button{
+    background-color:#BF8C6F;
+}
+.signup-button {
+    background-color:#26130F;
+}
+
+.buttons a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    /* text-decoration: underline; */
+}

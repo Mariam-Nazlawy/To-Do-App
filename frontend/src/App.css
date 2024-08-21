@@ -1,0 +1,105 @@
+.container{
+  /* width: 400px; */
+  /* margin-top: 25px auto; */
+  /* margin-bottom: 0; */
+  /* padding: 40px; */
+  /* border: 3px solid #0655a3; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  /* background-color: #1A1A40; */
+  /* align-items: center; */
+  /* text-align: center; */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    background: white;
+    color: white;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    -webkit-text-fill-color: black;
+    margin-top: 10rem;
+    margin-left: 35rem;
+    width: 400px;
+    height: 330px;
+    text-align: center;
+    
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: brown;
+  text-align: center;
+  margin: 1rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 1.5rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ead7d7;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  -webkit-text-fill-color: white;
+}
+
+.form-button,.change-btn, .cancel-btn {
+  padding: 10px;
+  background-color: #375ac3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  -webkit-text-fill-color: aliceblue;
+  margin: 1rem;
+
+}
+.change-btn{
+  background-color: #375ac3;
+}
+.cancel-btn{
+  background-color: gray;
+}
+
+.form-button:disabled {
+  background-color: #ccc;
+}
+
+.form-error {
+  text-align: center;
+  color: red;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 30px;
+  /* margin-bottom: 10px; */
+}
+
+.switch-link a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}

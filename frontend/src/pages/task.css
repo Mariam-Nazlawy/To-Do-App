@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.task-manager {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.TaskPage {
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.TaskWrapper {
+    background: bisque;
+    margin-top: 5rem;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 500pt;
+}
+
+.TaskForm {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.task-input {
+    outline: none;
+    background: none;
+    border: 1px solid brown;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 300px;
+    color: #fff;
+}
+
+.task-input::placeholder {
+    color: #ffffff4d;
+}
+
+.task-btn {
+    background: brown;
+    color: #fff;
+    border: none;
+    padding: 0.55rem;
+    cursor: pointer;
+}
+
+.Task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: brown;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* .fa-trash { */
+    /* margin-left: 0.75rem; */
+/* } */
+/*  */
+/* .edit-icon{ */
+    /* margin-left:auto */
+/* } */
+/* .square-icon { */
+    /* margin-left: auto; */
+/* } */
+.incompleted {
+    color: #fff;
+    cursor: pointer;
+}
+.completed {
+    color: #c5aeff;
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon, 
+.square-icon {
+    cursor: pointer;
+    margin-left: 0.75rem;
+}
