@@ -21,13 +21,14 @@ app.use('/api', routes);
 
 
 // add environment variable of the port
-const port = process.env.PORT;
+const port = process.env.PORT || 3000
 
-
+//console.log(process.env.MONGO_URI)
 // connect to the database then startup the server
 const start = async () => {
+    const MONGO_URI = process.env.MONGO_URI
     try {
-        await connectDB(process.env.MONGO_URI)
+        await connectDB(MONGO_URI)
         app.listen(port, () => console.log(`Listening on port ${port}....`));
     }
     catch (error) {
