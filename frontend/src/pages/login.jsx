@@ -1,11 +1,11 @@
-import AuthForm from "../components/AuthForm"
-import '../App.css'
+import '../authForm.css'
+import LoginForm from '../components/LoginForm'
 
 export default function login(){
 
     return (
         <>
-            <AuthForm formType='Login'/>
+            <LoginForm/>
         </>
     )
 }

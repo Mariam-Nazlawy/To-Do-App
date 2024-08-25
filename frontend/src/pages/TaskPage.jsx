@@ -1,5 +1,5 @@
 import TaskWrapper from "../components/TaskWrapper";
-import './task.css'
+import '../components/task.css'
 function Task() {
     
     return (

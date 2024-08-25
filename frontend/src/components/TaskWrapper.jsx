@@ -1,6 +1,6 @@
 import TaskForm from "./TaskForm";
 import { useState, useEffect } from "react";
-import '../pages/task.css' 
+import './task.css' 
 import Task from "./Task";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

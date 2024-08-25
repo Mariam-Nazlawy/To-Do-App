@@ -1,0 +1,14 @@
+version: '3' 
+services: 
+  backend: 
+    build: ./backend 
+    ports: 
+      - "3000:3000" 
+    environment: 
+      - MONGO_URI=mongodb+srv://maryamnzlawy:todoapp@todoapp.u2hbw1j.mongodb.net/TASK-MANAGER?retryWrites=true&w=majority&appName=ToDoApp
+      - JWT_SECRET="qwertyuiop123456asdfghjkl7890zxcvbnm"
+      
+  frontend: 
+    build: ./frontend 
+    ports: 
+      - "80:80"

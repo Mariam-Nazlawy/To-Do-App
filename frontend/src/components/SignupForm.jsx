@@ -1,14 +1,12 @@
-//import boot from'bootstrap' 
-import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
-//import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 import '../pages/home.css'
 import './edit-task.css'
 
 
 
-function AuthForm({ formType }) {
-    const endpoint = formType === 'Login' ? "http://localhost:3000/api/auth/login" : "http://localhost:3000/api/auth/signup"
+function SignupForm() {
+    const endpoint = "http://localhost:3000/api/auth/signup"
     const navigate = useNavigate()
 
     const submitForm = async (e) => {
@@ -24,11 +22,9 @@ function AuthForm({ formType }) {
                 },
                 body: JSON.stringify(payload)
             });
-            const data = await response.json();
-            if (formType == "Login") { localStorage.setItem("token", data.token) }
-            console.log(data.token);
-            //const token = data.token
-            navigate(formType === 'Login' ? "/task" : '/login')
+            const status = response.status;
+            (status === 201 ? toast.success('signed up successfully') : toast.error('Signup Failed'))
+            navigate('/login')
         }
         catch (error) {
             console.error(error)
@@ -39,10 +35,9 @@ function AuthForm({ formType }) {
         <div className='background-image'>
             <div className='container'>
             <form onSubmit={submitForm}>
-                {formType === 'Login' ? <h2>Login to your account</h2> : <h2>Create New Account</h2>}
-                
+                <h2>Create New Account</h2>
                 <div className="form-group">
-                    <label className="form-label" label>Email</label>
+                    <label className="form-label">Email</label>
                     <input
                         className="form-input"
                         name="email"
@@ -51,7 +46,7 @@ function AuthForm({ formType }) {
                     />
                 </div>  
                 <div className="form-group">
-                    <label className="form-label" label>Password</label>
+                    <label className="form-label">Password</label>
                     <input
                         className="form-input"
                         name="password"
@@ -60,22 +55,17 @@ function AuthForm({ formType }) {
                     />
                 </div> 
                 <div className="switch-link">
-                    {formType === 'Login' ? (
-                    <p>Do not have an account? <a href="/signup">Sign Up</a></p>) :
-                    (<p>Already have an account? <a href="/login">Login</a></p>)}
+                    <p>Already have an account? <a href="/login">Login</a></p>
                 </div>
                 <button type='submit' className="form-button">
-                    {formType}
+                    Signup
                 </button>
             </form>
             </div>
+            <ToastContainer/>
         </div>
 
     )
 }
 
-// Define prop types
-AuthForm.propTypes = {
-  formType: PropTypes.oneOf(['Login', 'Signup']).isRequired
-};
-export default AuthForm
+export default SignupForm

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavBar from "./NavBar";
-import '../App.css'
+import '../authForm.css'
 import '../pages/home.css'
 useNavigate
 

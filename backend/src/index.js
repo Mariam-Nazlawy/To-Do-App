@@ -8,9 +8,7 @@ require('dotenv').config({path: '../.env'})
 // middleware
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:5000' // Allow only your frontend server
-}));
+app.use(cors());
 
 
 // routes
@@ -23,7 +21,7 @@ app.use('/api', routes);
 // add environment variable of the port
 const port = process.env.PORT || 3000
 
-//console.log(process.env.MONGO_URI)
+console.log(process.env.MONGO_URI)
 // connect to the database then startup the server
 const start = async () => {
     const MONGO_URI = process.env.MONGO_URI
