@@ -8,15 +8,15 @@ responsive and user-friendly interface.
 ## Functional Requirements 
 
 ### User Authentication 
-Sign Up: Users able to create an account using their email and a password. 
-Login: Users able to log in to their account using their email and password. 
-Logout: Users  able to log out of their account. 
-Password Reset: Users  able to reset their password. 
+- Sign Up: Users can create an account using their email and a password. 
+- Login: Users can log in to their account using their email and password. 
+- Logout: Users  can log out of their account. 
+- Password Reset: Users can reset their password. 
 
 ### Task Management 
-Create Task: Users able to create a new task with a title, description, due date, and 
+- Create Task: Users can create a new task with a title, description, due date, and 
 priority level (e.g., low, medium, high). 
-View Tasks: Users able to view a list of their tasks. 
-Update Task: Users able to edit the details of an existing task. 
-Delete Task: Users able to delete a task. 
-Mark Task as Completed: Users able to mark a task as completed.
+- View Tasks: Users can view a list of their tasks. 
+- Update Task: Users can edit the details of an existing task. 
+- Delete Task: Users can delete a task. 
+- Mark Task as Completed: Users can mark a task as completed.
